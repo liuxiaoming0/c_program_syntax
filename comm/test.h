@@ -1,5 +1,6 @@
 #pragma once
 
+#include <libgen.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <any>
@@ -59,6 +60,9 @@ void test_ptr2();
 void test_ptr3();
 void test_ptr4();
 
+// 双重指针
+void test_double_ptr();
+
 // 只读和常量
 void test_constexpr();
 
@@ -67,3 +71,6 @@ void test_tuple();
 
 // 完美转发，区分左右值
 void test_perfect_forward();
+
+// dirname, basename
+void test_dirname();

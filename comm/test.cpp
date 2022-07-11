@@ -367,6 +367,37 @@ void test_ptr4() {
   // pa.reset();
 }
 
+// 双重指针
+#define PRINTF_VARINT_ADDRESS(name, v) printf("%s: address=%p, value=%d\n", name, &v, v)
+
+#define PRINTF_PTR_ADDRESS(name, ptr) \
+  printf("%s: address=%p, value=%p, ptr_value=%d\n", name, &ptr, ptr, *ptr)
+
+#define PRINTF_DOUBLE_PTR_ADDRESS(name, ptr) \
+  printf("%s: address=%p, value=%p, ptr_value=%p, doube_value=%d\n", name, &ptr, ptr, *ptr, **ptr)
+#define PRINTF_REGEX printf("----------------------------\n");
+
+void test_double_ptr() {
+  int a = 10;
+  int A = 12;
+  int* B = &A;
+  int** C = &B;
+  auto show = [&]() {
+    PRINTF_VARINT_ADDRESS("A", A);
+    PRINTF_PTR_ADDRESS("B", B);
+    PRINTF_DOUBLE_PTR_ADDRESS("C", C);
+    PRINTF_REGEX;
+  };
+
+  show();
+  auto func1 = [&](int* p) { p = &a; };
+  auto func2 = [&](int** p) { *p = &a; };
+  func1(B);
+  show();
+  func2(C);
+  show();
+}
+
 template <int N>
 class C {};
 void test_constexpr() {
@@ -464,4 +495,13 @@ void test_perfect_forward() {
   int a = 2;
   pf::func(a);
   pf::func(10);
+}
+
+// dirname, basename
+void test_dirname() {
+  std::string s = "/data/shell/test/tmp/a.txt";  // /data/shell/test/tmp
+  // std::string s = "/data/shell/test/tmp/";       // /data/shell/test/
+  // std::string s = "/data/shell/test/tmp";        // /data/shell/test/
+  auto path = dirname(const_cast<char*>(s.c_str()));
+  printf("path=%s\n", path);
 }

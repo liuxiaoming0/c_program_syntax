@@ -48,6 +48,18 @@ shared_ptr
 weak_ptr
       [场景]解决双向引用，weak_ptr不能单独创建，必须从shared_ptr复制，并保证先于shared_ptr释放，否则会出现使用nullptr
 
+## 双重指针
+函数传参，参数复制一份
+
+![](../img/double_ptr.png)
+
+```
+int a = 10;
+int A = 12;
+int *B = &A;  // B=0x04, *B=12
+int **C = &B; // C=0x08, *C=0x04, **C=12
+```
+
 ## constexpr
 C：const语义只有“只读”
 C++：const语义“只读”、“常量”，C11后建议常量用constexpr，只读用const

@@ -9,6 +9,7 @@
     20220702（6）：tuple、std::invalid_argument、完美转发、=default、=delete、override、final
     20220704（1）：profile性能分析、C++单元测试
     20220706（3）：上传github、补充gtest文档和用例、friend类、friend函数
+    20220711（1）: 双重指针
     后续根据新语法持续更新。。。。。。。
 # 1.C++编程
     运算符重载operator=()（√）
