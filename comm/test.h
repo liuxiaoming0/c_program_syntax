@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: danae
+ * @Date: 2022-07-11 11:12:34
+ * @LastEditors: danae
+ * @LastEditTime: 2022-07-13 19:25:49
+ */
 #pragma once
 
 #include <libgen.h>
@@ -74,3 +82,8 @@ void test_perfect_forward();
 
 // dirname, basename
 void test_dirname();
+
+// 函数指针
+int callback(int a);
+typedef int (*func_callback)(int a);
+void test_func_as_args(func_callback f);
