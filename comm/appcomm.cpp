@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: danae
- * @Date: 2022-07-07 09:28:48
- * @LastEditors: danae
- * @LastEditTime: 2022-07-12 14:17:38
- */
 #include "appcomm.h"
 
 int32_t E_a = 2;   // 头文件声明，此处定义

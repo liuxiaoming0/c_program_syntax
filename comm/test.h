@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: danae
- * @Date: 2022-07-11 11:12:34
- * @LastEditors: danae
- * @LastEditTime: 2022-07-13 19:25:49
- */
 #pragma once
 
 #include <libgen.h>
@@ -13,11 +5,14 @@
 #include <unistd.h>
 #include <any>
 #include <memory>
+#include <iostream>
 #include "appcomm.h"
 #include "class_friend.h"
 #include "class_print.h"
 #include "class_static.h"
 #include "class_template.h"
+
+using namespace std;
 
 // 公共函数
 void print_vec(VEC_INTEM vecItem) noexcept;

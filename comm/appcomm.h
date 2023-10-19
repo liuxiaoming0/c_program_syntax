@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: danae
- * @Date: 2022-07-07 09:28:48
- * @LastEditors: danae
- * @LastEditTime: 2022-07-12 14:17:28
- */
 #pragma once
 
 #include <libgen.h>

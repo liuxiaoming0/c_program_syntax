@@ -243,7 +243,7 @@ void test_static() {
 
   // 类静态成员变量、类静态成员函数
   Ccfg cfg(10);
-  printf("class static, cnt=%d\n", cfg.print_cnt());
+  // printf("class static, cnt=%d\n", cfg.print_cnt());
   cfg.set_path("/usr/local/bin");
 
   printf("class static, cnt=%s\n", cfg.print_path().c_str());
@@ -265,7 +265,7 @@ void test_vola() {
   printf("%d", b);
 }
 
-// smort pointer: shared_ptr
+// smart pointer: shared_ptr
 void test_ptr1() {
   LINE("normal");  // 第1部分-normal
   int i = 1;       //
@@ -487,14 +487,16 @@ void func2(int& i) { printf("l value\n"); }
 
 template <typename T>
 void func(T&& t) {
-  func2(std::forward<T>(t));
+  // func2(std::forward<T>(t));
+  func2(t);
 }  // T&&自动匹配左右值
 }  // namespace pf
 
 void test_perfect_forward() {
   int a = 2;
   pf::func(a);
-  pf::func(10);
+  pf::func(std::move(a));
+  pf::func2(10);
 }
 
 // dirname, basename

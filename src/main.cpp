@@ -1,14 +1,13 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: danae
- * @Date: 2022-07-07 09:28:49
- * @LastEditors: danae
- * @LastEditTime: 2022-07-13 19:26:26
- */
 #include "../comm/test.h"
+#include "../comm/class_static.h"
 
 //类外编译时初始化分配空间，其他地方容易重复定义
 // std::string Ccfg::cfg_path_ = "";
 
-int main(int argc, char** argv) { return 0; }
+int main(int argc, char** argv) {
+  // auto cfg = make_shared<CIncomeCfg>(10);
+  // int res = cfg->print_cnt(cfg);
+  // cout << res << endl;
+  test_perfect_forward();
+  return 0;
+}
