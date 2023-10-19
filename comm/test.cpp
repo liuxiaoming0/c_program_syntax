@@ -291,9 +291,10 @@ void test_ptr1() {
          sp3.use_count());
 
   sp2.reset();
-  printf("sp3=%d, sp2.cnt=%lu, sp3.cnt=%lu\n", *sp3, sp2.use_count(), sp3.use_count());
+  printf("sp2.cnt=%lu, sp3.cnt=%lu\n", sp2.use_count(), sp3.use_count());
 
   std::shared_ptr<int> sp4(std::move(sp3));
+  // printf("sp3=%d\n", *sp3);  // coredump
   printf("sp3.cnt=%lu, sp4.cnt=%lu\n", sp3.use_count(), sp4.use_count());
 
   LINE("share ptr (int[])");  // 第3部分-shareptr
