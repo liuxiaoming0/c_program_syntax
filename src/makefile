@@ -7,13 +7,14 @@ PATH_COMM := $(PATH_ROOT)/comm
 
 CFLAGS = -g -o0 -DNDEBUG -Wall -fpic -std=c++17 -Wno-unused-variable
 CFLAGS += -fno-elide-constructors
-LIBS = $(LIB_CFT) -lpthread -ldl -lrt -lz -lssl -lcrypto -lcurl
+LIBS = -lpthread -ldl -lrt -lz -lssl -lcrypto -lcurl
 EXE = $(PATH_BIN)/pro_syntax
 
 CFLAGS += -I$(PATH_ROOT)
 LIBS += $(LIBYAML)
-OBJS = $(patsubst $(PATH_SRC)/%.cpp, $(PATH_OBJS)/%.o, $(wildcard $(PATH_SRC)/*.cpp))
-OBJS += $(patsubst $(PATH_COMM)/%.cpp, $(PATH_OBJS)/%.o, $(wildcard $(PATH_COMM)/*.cpp))
+OBJS = $(patsubst $(PATH_COMM)/%.cpp, $(PATH_OBJS)/%.o, $(wildcard $(PATH_COMM)/*.cpp))
+OBJS += $(patsubst $(PATH_SRC)/%.cpp, $(PATH_OBJS)/%.o, $(wildcard $(PATH_SRC)/*.cpp))
+
 
 
 $(EXE) : $(OBJS)

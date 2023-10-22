@@ -298,25 +298,24 @@ void test_ptr1() {
   printf("sp3.cnt=%lu, sp4.cnt=%lu\n", sp3.use_count(), sp4.use_count());
 
   LINE("share ptr (int[])");  // 第3部分-shareptr
-  std::shared_ptr<int[]> ap1(new int[10](),
+  std::shared_ptr<int[]> ap1(new int[10]{2,3,4},
                              [](int* p) { delete[] p; });  //  c11后不必设置数组缺省的析构
   ap1[0] = 100;
-  printf("ap1[0]=%d, ap1[100]=%d\n", ap1[0], ap1[100]);
+  printf("ap1[0]=%d, ap1[1]=%d\n", ap1[0], ap1[1]);
 }
 
 // unique_ptr
 void test_ptr2() {
-  int* up1 = new int(10);
+  int* up1 = new int{10};
   auto up2 = std::make_shared<int>(10);
-  std::weak_ptr up3(up2);  // can`t created direct
+  // std::weak_ptr up3(up2);  // can`t created direct
 
   auto up4 = new Cprint();
   std::unique_ptr<Cprint> up5(new Cprint());
   auto up6 = std::make_unique<Cprint>();
   std::unique_ptr<Cprint> up7(std::move(up4));  // ownership move only way，remain unique
 
-  printf("sizeof(up1)=%lu, sizeof(up2)=%lu, sizeof(up3)=%lu\n", sizeof(up1), sizeof(up2),
-         sizeof(up3));
+  // printf("sizeof(up1)=%lu, sizeof(up2)=%lu, sizeof(up3)=%lu\n", sizeof(up1), sizeof(up2), sizeof(up3));
   RELASE_PTR(up1);
 }
 
@@ -352,19 +351,22 @@ void test_ptr4() {
     A() { std::cout << __FUNCTION__ << std::endl; }
     ~A() { std::cout << __FUNCTION__ << std::endl; }
   };
-  struct B : public A {
-    // std::shared_ptr<A> a;  // resource leak, destructor isn`t called
-    std::weak_ptr<A> a;  // ok
+  struct B {
+    std::shared_ptr<A> a;  // resource leak, destructor isn`t called
+    // std::weak_ptr<A> a;  // ok
     B() { std::cout << __FUNCTION__ << std::endl; }
     ~B() { std::cout << __FUNCTION__ << std::endl; }
   };
 
   // std::shared_ptr<A> pa(new A()); // not split two statement, it`s ok
-  auto pa = std::make_shared<A>();  // suggest method
-  auto pb = std::make_shared<B>();
-  pa->b = pb;
-  pb->a = pa;
-  printf("pa.cnt=%lu, pb.cnt=%lu\n", pa.use_count(), pb.use_count());
+  {
+    auto pa = std::make_shared<A>();  // suggest method
+    auto pb = std::make_shared<B>();
+    pa->b = pb;
+    pb->a = pa;
+    // printf("pa.cnt=%lu, pb.cnt=%lu\n", pa.use_count(), pb.use_count());
+  }
+  cout << "test" << endl;
   // pa.reset();
 }
 
