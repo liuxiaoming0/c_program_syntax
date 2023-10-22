@@ -370,6 +370,17 @@ void test_ptr4() {
   // pa.reset();
 }
 
+void test_ptr5() {
+  std::auto_ptr<int> p1(new int(10));
+  auto f = [](std::auto_ptr<int> p) {
+    if (p.get() == nullptr) cout << "p is nullptr" << std::endl;
+    else cout << "*p=" << *p << std::endl;
+  };
+  f(p1);
+  if (p1.get() == nullptr) cout << "p1 is nullptr" << std::endl;
+  else cout << "*p1=" << *p1 << std::endl;
+}
+
 // 双重指针
 #define PRINTF_VARINT_ADDRESS(name, v) printf("%s: address=%p, value=%d\n", name, &v, v)
 

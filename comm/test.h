@@ -62,6 +62,7 @@ void test_ptr1();
 void test_ptr2();
 void test_ptr3();
 void test_ptr4();
+void test_ptr5();
 
 // 双重指针
 void test_double_ptr();

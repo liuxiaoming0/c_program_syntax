@@ -8,6 +8,6 @@ int main(int argc, char** argv) {
   // auto cfg = make_shared<CIncomeCfg>(10);
   // int res = cfg->print_cnt(cfg);
   // cout << res << endl;
-  test_ptr4();
+  test_constexpr();
   return 0;
 }
