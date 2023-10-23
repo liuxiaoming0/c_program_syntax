@@ -7,13 +7,13 @@
       "label": "cd", // 任务名称
       "command": "cd", // 命令
       "args": [
-        "/usr/local/proj/c11book/c_program_syntax/src"
+        "/usr/local/proj/c11book/c_program_syntax_10_23/src"
       ], // 相当于cd src
       "type": "shell"
     },
     {
       "label": "clean", // 任务名称
-      "command": "cd /usr/local/proj/c11book/c_program_syntax/src;make clean", // 命令
+      "command": "cd /usr/local/proj/c11book/c_program_syntax_10_23/src;make clean", // 命令
       // "args": [
       //   "clean"
       // ], // 相当于make clean
@@ -21,7 +21,7 @@
     },
     {
       "label": "build-debug",
-      "command": "cd /usr/local/proj/c11book/c_program_syntax/src;make",
+      "command": "cd /usr/local/proj/c11book/c_program_syntax_10_23/src;make",
       // "args": [
       //   "debug"
       // ],

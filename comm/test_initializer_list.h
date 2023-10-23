@@ -3,6 +3,7 @@
 class TINITAL {
  public:
   TINITAL(int a, int b): a_(a), b_(b){};
+  // explicit TINITAL(int a, int b): a_(a), b_(b){}; // initializer list can`t used
   int GetA() { return a_; }
   int GetB() { return b_; }
 
@@ -25,6 +26,11 @@ class TINITALS {
 };
 
 void test_initializer_list() {
-  TINITALS t1 = {11,12,13};
-  std::cout << t1.GetA() << " " << t1.GetB() << " " << t1.GetC() << std::endl;
+  // TINITAL t1 = {1,2};
+  // TINITAL t1 (1,2);
+  TINITAL t1 {1,2};
+  std::cout << t1.GetA() << " " << t1.GetB() << std::endl;
+
+  TINITALS t2 = {11,12,13};
+  std::cout << t2.GetA() << " " << t2.GetB() << " " << t2.GetC() << std::endl;
 }
