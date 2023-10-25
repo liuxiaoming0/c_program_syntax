@@ -20,7 +20,7 @@ void test_tuple() {
     if (id == 0) return std::make_tuple(1.1, 'A', "Lisa");
     if (id == 1) return std::make_tuple(1.2, 'C', "Jack");
     if (id == 2) return std::make_tuple(1.3, 'B', "Rose");
-    throw std::invalid_argument("id");
+    throw std::invalid_argument("id is not existed.");
   };
 
   try {
