@@ -2,8 +2,6 @@
 #define B7EE13BF_9E36_4AAF_BEF1_02766A72CA4C
 #include "test.h"
 
-std::string Ccfg::cfg_path_ = "";
-
 // 运行态打印迭代器类型typeid、类型转换
 void test_map_type() noexcept {
   std::unordered_map<std::string, int32_t> datas;

@@ -2,6 +2,16 @@
 #define CBE2D46E_CF09_45C1_A5AF_CB6A38976FD4
 #include "test.h"
 
+struct TSTATIC {
+  static const int a = 1;
+  const static int b = 2;
+  static int c;
+  inline static int d;
+};
+
+int TSTATIC::c = 3;
+// int TSTATIC::d = 4;
+
 // 作用域、extern、static、const
 void test_static() {
   // 局部静态变量，作用域后不释放
@@ -24,6 +34,8 @@ void test_static() {
 
   // 全局静态变量（默认对其他源文件隐藏，不会因为头文件定义而报错重复定义），用包含头文件的方式使用
   printf("E_c=%d\n", E_c);
+  E_c = 10;
+  printf("E_c=%d\n", E_c);
   // printf("test extern, E_f=%d\n", F_f);
 
   // 类静态成员变量、类静态成员函数
@@ -32,6 +44,11 @@ void test_static() {
   cfg.set_path("/usr/local/bin");
 
   printf("class static, cnt=%s\n", cfg.print_path().c_str());
+
+  cout << TSTATIC::a << endl;
+  cout << TSTATIC::b << endl;
+  cout << TSTATIC::c << endl;
+  cout << TSTATIC::d << endl;
 }
 
 #endif /* CBE2D46E_CF09_45C1_A5AF_CB6A38976FD4 */
